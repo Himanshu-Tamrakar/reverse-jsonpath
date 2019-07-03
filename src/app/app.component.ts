@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonService } from './shared/services/common.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'reverse-jsonpath';
+
+  constructor(private commonService:CommonService) {
+      this.commonService.test();
+  }
+
 }
