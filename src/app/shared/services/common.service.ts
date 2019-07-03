@@ -37,7 +37,7 @@ export class CommonService {
   }
 
   test() {
-    const tt = ["$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[0][2][\"india\"][\'madhyapradesh\']['state']"];
+    const tt = ["$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[\"india\"][\'madhyapradesh\']['state']", "$[\"state\"]"];
     this.convertJsonPathString(tt).then((response: string[]) => {
       if (response.length > 0) {
         console.log("RESPONSE IS", response)
