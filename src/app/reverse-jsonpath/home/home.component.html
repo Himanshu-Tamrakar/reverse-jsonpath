@@ -1,0 +1,34 @@
+
+<h1>home works!</h1>
+
+<div class="row">
+  <form [formGroup]="homeForm" class="col m12 m12">
+
+      <div formArrayName="jpaths">
+        <div *ngFor="let item of homeForm['controls']['jpaths']['controls']; let i=index">
+          <div class="panel-body" [formGroupName]="i">
+
+            <div class="col m8">
+              <input placeholder="Enter jsonpath value" type="text" class="" formControlName="path">
+            </div>
+
+            <div class="col m2">
+              <input placeholder="Enter it's value" type="text" class="" formControlName="value">
+            </div>
+            <div class="col m2" >
+              <a class="btn-flat" (click)="add()">Add</a>
+              <a *ngIf="homeForm.value.jpaths.length > 1" class="btn-flat" (click)="remove(i)">Remove</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+  </form>
+</div>
+
+
+<div class="card grey">
+    <pre>{{someObject | json}}</pre>
+    <!-- <ngx-json-viewer [json]="someObject" [expanded]="true"></ngx-json-viewer> -->
+</div>
