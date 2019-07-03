@@ -8,7 +8,6 @@ export class ReverseJsonFormService {
 
   getForm():FormGroup {
     return this._fb.group({
-      name: '',
       jpaths: this._fb.array([this._fb.group({
         path: ['', [Validators.required]],
         value: ['', [Validators.required]]

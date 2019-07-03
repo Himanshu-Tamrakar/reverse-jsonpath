@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ReverseJsonpathRoutingModule } from './reverse-jsonpath-routing.module';
-import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { HomeComponent } from './home/home.component';
 import { ReverseJsonFormService } from './core/services/reverse-json-form.service';
 
@@ -12,8 +11,7 @@ import { ReverseJsonFormService } from './core/services/reverse-json-form.servic
   imports: [
     CommonModule,
     ReverseJsonpathRoutingModule,
-    ReactiveFormsModule,
-    NgxJsonViewerModule
+    ReactiveFormsModule
   ],
   providers: [ReverseJsonFormService]
 })

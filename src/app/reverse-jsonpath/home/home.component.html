@@ -1,34 +1,32 @@
-
-<h1>home works!</h1>
-
-<div class="row">
-  <form [formGroup]="homeForm" class="col m12 m12">
-
+    <form [formGroup]="homeForm" class="form">
       <div formArrayName="jpaths">
-        <div *ngFor="let item of homeForm['controls']['jpaths']['controls']; let i=index">
+        <div *ngFor="let item of homeForm['controls']['jpaths']['controls']; let i=index" class="row">
           <div class="panel-body" [formGroupName]="i">
-
-            <div class="col m8">
-              <input placeholder="Enter jsonpath value" type="text" class="" formControlName="path">
+            <div class="col m7">
+              <input formControlName="path" type="text" placeholder="Enter json path" />
+            </div>
+            <div class="col m2">
+              <input formControlName="value" type="text" placeholder="Enter value" />
             </div>
 
             <div class="col m2">
-              <input placeholder="Enter it's value" type="text" class="" formControlName="value">
+              <button (click)="add()">Add</button>
             </div>
-            <div class="col m2" >
-              <a class="btn-flat" (click)="add()">Add</a>
-              <a *ngIf="homeForm.value.jpaths.length > 1" class="btn-flat" (click)="remove(i)">Remove</a>
+
+            <div *ngIf="homeForm.value.jpaths.length > 1" class="col m1">
+              <a (click)="remove(i)">Remove</a>
             </div>
 
           </div>
         </div>
       </div>
 
-  </form>
-</div>
+      <button (click)="onSubmit()" type="submit">Generate</button>
+    </form>
 
 
-<div class="card grey">
-    <pre>{{someObject | json}}</pre>
-    <!-- <ngx-json-viewer [json]="someObject" [expanded]="true"></ngx-json-viewer> -->
-</div>
+    <div class="card grey">
+      <!-- <ace-editor [(text)]="code" mode="json" style="height:400px;"></ace-editor> -->
+      <!-- <pre>{{someObject | json}}</pre> -->
+      <!-- <ngx-json-viewer [json]="someObject" [expanded]="true"></ngx-json-viewer> -->
+    </div>

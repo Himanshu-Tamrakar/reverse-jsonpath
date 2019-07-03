@@ -7,26 +7,32 @@ import { ReverseJsonFormService } from '../core/services/reverse-json-form.servi
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  public homeForm:FormGroup;
-  public someObject:any = {};
-  constructor(private _fb:FormBuilder, private _rjfs:ReverseJsonFormService) {
+export class HomeComponent {
+  public homeForm: FormGroup;
+
+  constructor(private _fb: FormBuilder, private _rjfs: ReverseJsonFormService) {
     this.homeForm = this._rjfs.getForm();
   }
 
-  ngOnInit() {}
-
-  add():void {
-    let controls = <FormArray> this.homeForm['controls']['jpaths'];
+  add(): void {
+    let controls = <FormArray>this.homeForm['controls']['jpaths'];
     controls.push(this._fb.group({
       path: ['', [Validators.required]],
       value: ['', [Validators.required]]
     }))
   }
 
-  remove(i:number):void {
-    let controls = <FormArray> this.homeForm['controls']['jpaths'];
+  remove(i: number): void {
+    let controls = <FormArray>this.homeForm['controls']['jpaths'];
     controls.removeAt(i);
   }
+
+  onSubmit() {
+    alert()
+  }
+
+  // get code() {
+  //   return JSON.stringify(this.data, null, 2);
+  // }
 
 }

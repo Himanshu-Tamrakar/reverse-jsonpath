@@ -32,7 +32,8 @@
               "src/assets/sass/materialize.scss"
             ],
             "scripts": [
-              "./node_modules/materialize-css/dist/js/materialize.min.js"
+              "./node_modules/materialize-css/dist/js/materialize.min.js",
+              "./node_modules/jquery/dist/jquery.js"
             ]
           },
           "configurations": {
