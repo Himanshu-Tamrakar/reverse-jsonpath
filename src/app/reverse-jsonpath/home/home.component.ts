@@ -1,16 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators, Validator } from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, FormArray, Validators } from "@angular/forms";
 import { ReverseJsonFormService } from '../core/services/reverse-json-form.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  template: `
+  <div *ngIf="!isMobile; else mobile">
+    <app-web></app-web>
+  </div>
+
+  <ng-template #mobile>
+    <app-mobile></app-mobile>
+  </ng-template>
+  `
 })
+
 export class HomeComponent {
+  public isMobile:boolean = detectMob();
   public homeForm: FormGroup;
 
-  constructor(private _fb: FormBuilder, private _rjfs: ReverseJsonFormService) {
+  public constructor(public _fb: FormBuilder, public _rjfs: ReverseJsonFormService) {
     this.homeForm = this._rjfs.getForm();
   }
 
@@ -27,12 +35,19 @@ export class HomeComponent {
     controls.removeAt(i);
   }
 
-  onSubmit() {
-    alert()
+  test() {
+    console.log(this.homeForm.value);
   }
 
-  // get code() {
-  //   return JSON.stringify(this.data, null, 2);
-  // }
+}
 
+/*
+To detect Mobile device or Computer device
+ */
+function detectMob() {
+   if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+     return true;
+   } else {
+     return false;
+   }
 }

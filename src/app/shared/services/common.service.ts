@@ -45,7 +45,6 @@ export class CommonService {
     };
 
     tt.forEach((v) => {
-      debugger
       _.set(temp, v, 'Himanshu');
       console.log(temp)
     })
