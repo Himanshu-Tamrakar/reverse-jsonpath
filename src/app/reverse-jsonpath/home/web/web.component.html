@@ -1,0 +1,26 @@
+<p>web works!</p>
+<form [formGroup]="homeForm" class="form">
+  <div formArrayName="jpaths">
+    <div *ngFor="let item of homeForm['controls']['jpaths']['controls']; let i=index" class="row">
+      <div class="panel-body" [formGroupName]="i">
+        <div class="col m7">
+          <input formControlName="path" type="text" placeholder="Enter json path" />
+        </div>
+        <div class="col m2">
+          <input formControlName="value" type="text" placeholder="Enter value" />
+        </div>
+
+        <div class="col m2">
+          <button (click)="add()">Add</button>
+        </div>
+
+        <div *ngIf="homeForm.value.jpaths.length > 1" class="col m1">
+          <a (click)="remove(i)">Remove</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <button (click)="onSubmit()" type="submit">Generate</button>
+</form>
