@@ -10,6 +10,14 @@ export class CommonService {
 
   constructor() { }
 
+  convertAJsonPathString(jps:string):string {
+    jps = jps.replace(/\['|\[\\'|\["|\[\\"/g, ".")
+    jps = jps.replace(/\']|\\\']|\"]|\\\"]/g, "")
+    jps = jps.replace(/\[/g, ".")
+    jps = jps.replace(/\]/g, "")
+    return jps;
+  }
+
   /**
    * [converJsonPathString It remove conver string having brackets to dot(.) one like
    * $['store'] => $.store ]

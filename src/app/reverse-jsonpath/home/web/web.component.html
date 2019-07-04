@@ -1,6 +1,36 @@
-<p>web works!</p>
-<form [formGroup]="homeForm" class="form">
-  <div formArrayName="jpaths">
+<div class="form">
+  <h1>Reverse The Jsonpath</h1>
+
+  <div class="i_v">
+    <input #jps style="width: 60%;" type="text" name="jp_s" placeholder="Enter jsonpath string">
+    <input #jpv style="width: 20%;" type="text" name="jp_v" placeholder="It's value">
+    <button (click)="insertValue()" style="width: 20%;" type="submit">Generate</button>
+  </div>
+
+  <div class="json">
+    <div class="o_j">
+      <pre>{{finalObject | json}}</pre>
+    </div>
+
+    <div class="jp_steps">
+      <ul>
+        <li *ngFor="let obj of homeForm.value['jpaths']; let i=index">
+          {{obj.path}}
+          <img (click)="remove(i)" src="/assets/reverseJson/images/cancel.svg" alt="">
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+<form [formGroup]="homeForm">
+
+  <!-- <div formArrayName="jpaths">
     <div *ngFor="let item of homeForm['controls']['jpaths']['controls']; let i=index" class="row">
       <div class="panel-body" [formGroupName]="i">
         <div class="col m7">
@@ -20,7 +50,7 @@
 
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <button (click)="onSubmit()" type="submit">Generate</button>
+  <!-- <button (click)="onSubmit()" type="submit">Generate</button> -->
 </form>

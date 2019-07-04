@@ -22,11 +22,11 @@ export class HomeComponent {
     this.homeForm = this._rjfs.getForm();
   }
 
-  add(): void {
+  add(path:string, value:string): void {
     let controls = <FormArray>this.homeForm['controls']['jpaths'];
     controls.push(this._fb.group({
-      path: ['', [Validators.required]],
-      value: ['', [Validators.required]]
+      path: [path, [Validators.required]],
+      value: [value, [Validators.required]]
     }))
   }
 
