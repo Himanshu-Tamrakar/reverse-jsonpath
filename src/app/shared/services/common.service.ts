@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+var _ = require('lodash');
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class CommonService {
    */
   convertJsonPathString(jpa: string[]) {
     const self = this;
-    return new Promise(function(resolve:Function, reject:Function) {
+    return new Promise(function(resolve: Function, reject: Function) {
       self.resolvePromise(jpa, resolve, reject);
     })
   }
@@ -37,7 +39,17 @@ export class CommonService {
   }
 
   test() {
-    const tt = ["$[0][2][\"india\"][\'madhyapradesh\']['state']", "$[\"india\"][\'madhyapradesh\']['state']", "$[\"state\"]"];
+    const tt = ["$[0][0][\"india\"][\'madhyapradesh\']['state']", "$[\"india\"][\'madhyapradesh\']['state']", "$[\"state\"]"];
+    let temp = {
+      $: {state: 'asdsds'}
+    };
+
+    tt.forEach((v) => {
+      debugger
+      _.set(temp, v, 'Himanshu');
+      console.log(temp)
+    })
+
     this.convertJsonPathString(tt).then((response: string[]) => {
       if (response.length > 0) {
         console.log("RESPONSE IS", response)
