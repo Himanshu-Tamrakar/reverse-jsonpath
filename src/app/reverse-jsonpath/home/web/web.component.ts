@@ -20,9 +20,7 @@ export class WebComponent extends HomeComponent implements OnInit {
     super(_fb, _rjfs);
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   onTabClick(fr:string, value:string) {
     console.log(fr, value);
@@ -38,10 +36,16 @@ export class WebComponent extends HomeComponent implements OnInit {
       console.log('jsonpath is wrong!')
     }
 
-    this.jsp.nativeElement.value="";
-    this.jpv.nativeElement.value="";
+    // this.jsp.nativeElement.value="";
+    // this.jpv.nativeElement.value="";
 
     if(path && value) this.add(path, value);
+  }
+
+  removeValue(i:number) {
+    let path = <string>this.homeForm['controls']['jpaths']['controls'][i]['controls']['path'].value;
+    _.unset(this.finalObject, path);
+    this.remove(i);
   }
 
   onSubmit() {
